@@ -75,7 +75,7 @@ class TetrisTest {
     @Test
     public void testGameOver() {
         tetris_board.start();
-        tetris_board.setStatusbar(tetris.getStatusBar()); // TODO add
+//        tetris_board.setStatusbar(tetris.getStatusBar()); // TODO add
 
         for (int i = 0; i < 10; i++)
             tetris_board.dropDown();

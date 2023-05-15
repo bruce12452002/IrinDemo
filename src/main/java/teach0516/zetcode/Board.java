@@ -24,6 +24,7 @@ public class Board extends JPanel {
     private JLabel statusbar; // 顯示在左上方的文字
     private Shape curPiece;
     private Shape.Tetrominoe[] board;
+    private boolean isGameOver = false;
 
     public Board(Tetris parent) {
         statusbar = parent.getStatusBar();
@@ -179,6 +180,7 @@ public class Board extends JPanel {
             timer.cancel();
             isStarted = false;
             setStatusText("Game over");
+            isGameOver = true; // TODO add
         }
     }
 
@@ -291,10 +293,11 @@ public class Board extends JPanel {
 
     public boolean getGameOver() {
         // TODO add
-        if ("Game over".equals(statusbar.getText())) {
-            return true;
-        }
-        return false;
+//        if ("Game over".equals(statusbar.getText())) {
+//            return true;
+//        }
+//        return false;
+        return isGameOver;
     }
 
     private class TAdapter extends KeyAdapter {
