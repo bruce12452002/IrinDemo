@@ -3,13 +3,21 @@ package teach0516.zetcode;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.concurrent.TimeUnit;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class TetrisTest {
     static private Tetris tetris;
     static private Board tetris_board;
 
     private boolean tetris_move(int x_val) {
+//        System.out.println(tetris_board.curX + x_val + "," + tetris_board.curY); // 6, 21
+        // 0, 21
+        // 1, 21
+        // 3, 21
+        // 7, 21
         return tetris_board.tryMove(tetris_board.getCurPiece(),
                 tetris_board.curX + x_val, tetris_board.curY);
     }
@@ -44,6 +52,7 @@ class TetrisTest {
         int t = 0;
         try {
             while (t < 100) {
+//                System.out.println("t=" + t);
                 if (Math.random() > 0.5)
                     tetris_move(1);
                 else
@@ -66,7 +75,9 @@ class TetrisTest {
     @Test
     public void testGameOver() {
         tetris_board.start();
-        for (int i=0; i<10; i++)
+        tetris_board.setStatusbar(tetris.getStatusBar()); // TODO add
+
+        for (int i = 0; i < 10; i++)
             tetris_board.dropDown();
         boolean ret = tetris_board.getGameOver();
         assertTrue(ret);
@@ -79,7 +90,7 @@ class TetrisTest {
     @Test
     public void testSquareShapes() {
         tetris_board.start();
-        for (int x=-6; x<=4; x += 2) {
+        for (int x = -6; x <= 4; x += 2) {
             tetris_board.newPiece(Shape.Tetrominoe.SquareShape);
             tetris_move(x);
 
@@ -90,6 +101,14 @@ class TetrisTest {
             tetris_board.dropDown();
         }
         int lines = tetris_board.getLinesRemoved();
+        System.out.println(lines);
+
+//        try {
+//            TimeUnit.SECONDS.sleep(20);
+//        } catch (InterruptedException e) {
+//        }
+
+
         assertTrue(lines == 2);
     }
 
@@ -114,12 +133,14 @@ class TetrisTest {
         tetris_move(1);
         tetris_board.dropDown();
 
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-        }
-
         int lines = tetris_board.getLinesRemoved();
+        System.out.println("lines=" + lines);
+//        try {
+//            TimeUnit.SECONDS.sleep(20);
+//        } catch (InterruptedException e) {
+//        }
+
+
         assertTrue(lines == 1);
     }
 }

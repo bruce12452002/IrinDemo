@@ -66,6 +66,7 @@ public class Shape {
         Random r = new Random();
         int x = Math.abs(r.nextInt()) % 7 + 1;
         Tetrominoe[] values = Tetrominoe.values();
+//        setShape(values[3]);
         setShape(values[x]);
     }
 

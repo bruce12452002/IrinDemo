@@ -12,7 +12,7 @@ public class Board extends JPanel {
     private final int BOARD_WIDTH = 10; // 左右方塊有幾個
     private final int BOARD_HEIGHT = 22; // 上下方塊有幾個
     private final int INITIAL_DELAY = 100; // 開始玩的時候，慢個 100 毫秒才開始
-    private final int PERIOD_INTERVAL = 300; // 每 300 毫秒方塊往下
+    private final int PERIOD_INTERVAL = 1000; // 每 300 毫秒方塊往下
 
     private Timer timer;
     private boolean isFallingFinished = false; // 方塊是否掉到最下面了
@@ -151,7 +151,6 @@ public class Board extends JPanel {
             int y = curY - curPiece.y(i);
             board[(y * BOARD_WIDTH) + x] = curPiece.getShape();
         }
-
         removeFullLines();
 
         if (!isFallingFinished) {
@@ -165,7 +164,8 @@ public class Board extends JPanel {
     }
 
     public void newPiece(Shape.Tetrominoe shape) {
-        curPiece.setShape(Shape.Tetrominoe.TShape);
+        curPiece.setShape(shape); // TODO add
+//        curPiece.setShape(Shape.Tetrominoe.TShape);
         initPiece();
     }
 
@@ -200,7 +200,7 @@ public class Board extends JPanel {
                 return false;
             }
         }
-
+//        System.out.println(newX + "," + newY);
         curPiece = newPiece;
         curX = newX;
         curY = newY;
@@ -211,13 +211,11 @@ public class Board extends JPanel {
     }
 
     private void removeFullLines() {
-
         int numFullLines = 0;
 
         for (int i = BOARD_HEIGHT - 1; i >= 0; --i) {
             boolean lineIsFull = true;
 
-            // 檢查一行裡有沒有空格
             for (int j = 0; j < BOARD_WIDTH; ++j) {
                 if (shapeAt(j, i) == Shape.Tetrominoe.NoShape) {
                     lineIsFull = false;
@@ -292,6 +290,10 @@ public class Board extends JPanel {
     }
 
     public boolean getGameOver() {
+        // TODO add
+        if ("Game over".equals(statusbar.getText())) {
+            return true;
+        }
         return false;
     }
 
