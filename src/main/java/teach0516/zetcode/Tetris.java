@@ -31,7 +31,7 @@ public class Tetris extends JFrame {
         setTitle("Tetris");
         setSize(400, 800);
         setDefaultCloseOperation(EXIT_ON_CLOSE); // 關閉時，整個畫面關掉
-        setLocationRelativeTo(null); // 置中顯示
+        setLocationRelativeTo(null); // 畫面在螢慕中間顯示
     }
 
     public JLabel getStatusBar() {

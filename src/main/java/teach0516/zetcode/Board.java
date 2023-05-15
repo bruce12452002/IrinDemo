@@ -96,7 +96,7 @@ public class Board extends JPanel {
                 Shape.Tetrominoe shape = shapeAt(j, BOARD_HEIGHT - i - 1);
                 if (shape != Shape.Tetrominoe.NoShape) {
 
-                    drawSquare(g, 0 + j * squareWidth(),
+                    drawSquare(g, j * squareWidth(),
                             boardTop + i * squareHeight(), shape);
                 }
             }
@@ -107,7 +107,7 @@ public class Board extends JPanel {
 
                 int x = curX + curPiece.x(i);
                 int y = curY - curPiece.y(i);
-                drawSquare(g, 0 + x * squareWidth(),
+                drawSquare(g, x * squareWidth(),
                         boardTop + (BOARD_HEIGHT - y - 1) * squareHeight(),
                         curPiece.getShape());
             }
@@ -189,7 +189,6 @@ public class Board extends JPanel {
     public boolean tryMove(Shape newPiece, int newX, int newY) {
 
         for (int i = 0; i < 4; ++i) {
-
             int x = newX + newPiece.x(i);
             int y = newY - newPiece.y(i);
 
@@ -218,22 +217,18 @@ public class Board extends JPanel {
         for (int i = BOARD_HEIGHT - 1; i >= 0; --i) {
             boolean lineIsFull = true;
 
+            // 檢查一行裡有沒有空格
             for (int j = 0; j < BOARD_WIDTH; ++j) {
-
                 if (shapeAt(j, i) == Shape.Tetrominoe.NoShape) {
-
                     lineIsFull = false;
                     break;
                 }
             }
 
             if (lineIsFull) {
-
                 ++numFullLines;
-
                 for (int k = i; k < BOARD_HEIGHT - 1; ++k) {
                     for (int j = 0; j < BOARD_WIDTH; ++j) {
-
                         board[(k * BOARD_WIDTH) + j] = shapeAt(j, k + 1);
                     }
                 }
@@ -241,7 +236,6 @@ public class Board extends JPanel {
         }
 
         if (numFullLines > 0) {
-
             numLinesRemoved += numFullLines;
             setStatusText(String.valueOf(numLinesRemoved));
             isFallingFinished = true;
@@ -278,7 +272,7 @@ public class Board extends JPanel {
 
     private void doGameCycle() {
         update();
-//        repaint();
+        repaint();
     }
 
     private void update() {
@@ -306,7 +300,11 @@ public class Board extends JPanel {
         @Override
         public void keyPressed(KeyEvent e) {
 
-            System.out.println("key pressed");
+            // System.out.println("key pressed");
+
+//            if (e.getKeyCode() == KeyEvent.VK_R) { // 重玩
+//                start();
+//            }
 
             if (!isStarted || curPiece.getShape() == Shape.Tetrominoe.NoShape) {
                 return;
