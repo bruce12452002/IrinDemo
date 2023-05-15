@@ -30,7 +30,7 @@ public class Tetris extends JFrame {
 
         setTitle("Tetris");
         setSize(400, 800);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE); // 關閉時，整個畫面關掉
         setLocationRelativeTo(null); // 置中顯示
     }
 
@@ -51,6 +51,7 @@ public class Tetris extends JFrame {
     }
 
     public static void main(String[] args) {
+        // swing is non-thread-safe
         EventQueue.invokeLater(() -> {
             Tetris game = new Tetris();
             game.setVisible(true);

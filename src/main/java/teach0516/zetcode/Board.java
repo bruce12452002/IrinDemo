@@ -9,19 +9,19 @@ import java.util.TimerTask;
 
 public class Board extends JPanel {
 
-    private final int BOARD_WIDTH = 10;
-    private final int BOARD_HEIGHT = 22;
-    private final int INITIAL_DELAY = 100;
-    private final int PERIOD_INTERVAL = 300;
+    private final int BOARD_WIDTH = 10; // 左右方塊有幾個
+    private final int BOARD_HEIGHT = 22; // 上下方塊有幾個
+    private final int INITIAL_DELAY = 100; // 開始玩的時候，慢個 100 毫秒才開始
+    private final int PERIOD_INTERVAL = 300; // 每 300 毫秒方塊往下
 
     private Timer timer;
-    private boolean isFallingFinished = false;
+    private boolean isFallingFinished = false; // 方塊是否掉到最下面了
     private boolean isStarted = false;
     private boolean isPaused = false;
-    private int numLinesRemoved = 0;
+    private int numLinesRemoved = 0; // 方塊成功消失的行數
     public int curX = 0;
     public int curY = 0;
-    private JLabel statusbar;
+    private JLabel statusbar; // 顯示在左上方的文字
     private Shape curPiece;
     private Shape.Tetrominoe[] board;
 
@@ -278,7 +278,7 @@ public class Board extends JPanel {
 
     private void doGameCycle() {
         update();
-        repaint();
+//        repaint();
     }
 
     private void update() {
@@ -314,7 +314,7 @@ public class Board extends JPanel {
 
             int keycode = e.getKeyCode();
 
-            if (keycode == KeyEvent.VK_P) {
+            if (keycode == KeyEvent.VK_P) { // 暫停
                 pause();
                 return;
             }
@@ -341,11 +341,11 @@ public class Board extends JPanel {
                     tryMove(curPiece.rotateLeft(), curX, curY);
                     break;
 
-                case KeyEvent.VK_SPACE:
+                case KeyEvent.VK_SPACE: // 直接到最底下
                     dropDown();
                     break;
 
-                case KeyEvent.VK_D:
+                case KeyEvent.VK_D: // 加快下降的速度
                     oneLineDown();
                     break;
             }
