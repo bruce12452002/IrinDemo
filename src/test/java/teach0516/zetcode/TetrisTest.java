@@ -3,8 +3,6 @@ package teach0516.zetcode;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.TimeUnit;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -13,11 +11,6 @@ class TetrisTest {
     static private Board tetris_board;
 
     private boolean tetris_move(int x_val) {
-//        System.out.println(tetris_board.curX + x_val + "," + tetris_board.curY); // 6, 21
-        // 0, 21
-        // 1, 21
-        // 3, 21
-        // 7, 21
         return tetris_board.tryMove(tetris_board.getCurPiece(),
                 tetris_board.curX + x_val, tetris_board.curY);
     }
