@@ -308,7 +308,10 @@ public class Board extends JPanel {
             // System.out.println("key pressed");
 
 //            if (e.getKeyCode() == KeyEvent.VK_R) { // 重玩
-//                start();
+//                EventQueue.invokeLater(() -> {
+//                    Tetris game = new Tetris();
+//                    game.setVisible(true);
+//                });
 //            }
 
             if (!isStarted || curPiece.getShape() == Shape.Tetrominoe.NoShape) {
