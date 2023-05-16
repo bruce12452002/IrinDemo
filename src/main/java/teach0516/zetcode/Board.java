@@ -12,7 +12,7 @@ public class Board extends JPanel {
     private final int BOARD_WIDTH = 10; // 左右方塊有幾個
     private final int BOARD_HEIGHT = 22; // 上下方塊有幾個
     private final int INITIAL_DELAY = 100; // 開始玩的時候，慢個 100 毫秒才開始
-    private final int PERIOD_INTERVAL = 1000; // 每 300 毫秒方塊往下
+    private int PERIOD_INTERVAL = 1000; // 每 300 毫秒方塊往下
 
     private Timer timer;
     private boolean isFallingFinished = false; // 方塊是否掉到最下面了
@@ -241,6 +241,11 @@ public class Board extends JPanel {
             isFallingFinished = true;
             curPiece.setShape(Shape.Tetrominoe.NoShape);
             repaint();
+
+            // 每消失一次，就增加速度
+//            PERIOD_INTERVAL -= 100;
+//            timer.scheduleAtFixedRate(new ScheduleTask(),
+//                    INITIAL_DELAY, PERIOD_INTERVAL);
         }
     }
 
