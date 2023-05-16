@@ -29,6 +29,7 @@ class TetrisTest {
         //System.setProperty("java.awt.headless", "false");
         tetris_board = new Board();
 
+        // 是否不支援螢幕、鍵盤、滑鼠
         boolean isHeadless = java.awt.
                 GraphicsEnvironment.getLocalGraphicsEnvironment().isHeadless();
 
