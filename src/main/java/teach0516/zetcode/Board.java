@@ -297,10 +297,6 @@ public class Board extends JPanel {
     }
 
     public boolean getGameOver() {
-        // TODO add
-//        if ("Game over".equals(statusbar.getText())) {
-//            return true;
-//        }
 //        return false;
         return gameOver;
     }
