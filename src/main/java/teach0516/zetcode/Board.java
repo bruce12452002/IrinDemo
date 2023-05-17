@@ -242,10 +242,12 @@ public class Board extends JPanel {
             curPiece.setShape(Shape.Tetrominoe.NoShape);
             repaint();
 
-            // 每消失一次，就增加速度
+            // 每消失一次(可能很多行)，就增加下降的速度
 //            PERIOD_INTERVAL -= 100;
-//            timer.scheduleAtFixedRate(new ScheduleTask(),
-//                    INITIAL_DELAY, PERIOD_INTERVAL);
+//            if (PERIOD_INTERVAL > 0) {
+//                timer.scheduleAtFixedRate(new ScheduleTask(),
+//                        INITIAL_DELAY, PERIOD_INTERVAL);
+//            }
         }
     }
 
@@ -298,7 +300,7 @@ public class Board extends JPanel {
 
     public boolean getGameOver() {
 //        return false;
-        return gameOver;
+        return gameOver; // TODO add
     }
 
     private class TAdapter extends KeyAdapter {
