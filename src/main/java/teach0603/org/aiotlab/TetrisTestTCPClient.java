@@ -19,7 +19,7 @@ public class TetrisTestTCPClient {
 
     public void connect(String address, int port) throws Exception {
         server_address = address;
-        server_port = 10000;
+        server_port = port; // TODO
         connect();
     }
     public void connect() throws Exception {

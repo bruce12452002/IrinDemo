@@ -25,7 +25,7 @@ class TetrisServerClientTest {
     public void testConnection() {
         try {
             TetrisTestTCPClient client = new TetrisTestTCPClient();
-            client.connect("localhost", 10612);
+            client.connect("localhost", server_port);
             client.disconnect();
         }
         catch (Exception exp) {
