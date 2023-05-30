@@ -50,6 +50,7 @@ public class TetrisTestTCPClient {
 
     public void start() throws Exception {
         // Fill-in the correct command start
+        // TODO
         sendRequest("start");
     }
 
@@ -80,7 +81,7 @@ public class TetrisTestTCPClient {
         isGameOver = (input.readByte() == (byte)1);
 
         byte [] intBuf = new byte[4];
-        int read = input.read(intBuf, 0, 4);
+        input.read(intBuf, 0, 4);
         linesRemoved = byteToint(intBuf);
 
         input.read(intBuf, 0, 4);
