@@ -56,6 +56,9 @@ public class TetrisTestTCPClient {
         // The move command is move [x_distance], for example, the command below
         // "move -1"
         // can move current piece to left
+
+        // TODO
+        sendRequest("move " + x);
     }
 
     public void rotate(Boolean clockwise) throws Exception {
@@ -85,8 +88,9 @@ public class TetrisTestTCPClient {
         byte [] byte_png = new byte[img_size];
         input.read(byte_png, 0, img_size);
 
-        //InputStream is = new ByteArrayInputStream(byte_png);
-        //receivedImage = ImageIO.read(is);
+        // TODO
+        InputStream is = new ByteArrayInputStream(byte_png);
+        receivedImage = ImageIO.read(is);
     }
 
     private int byteToint(byte [] byteBuf) {

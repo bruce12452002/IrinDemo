@@ -11,18 +11,19 @@ public class MyServerSocket {
     public static void main(String[] args) throws IOException {
         Socket clientSocket;
 //        while (true) {
-            try (ServerSocket serverSocket = new ServerSocket(12345)) {
-                System.out.println("等待中…");
-                clientSocket = serverSocket.accept();
-            }
-            InputStream in = clientSocket.getInputStream();
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
-            String line;
+        try (ServerSocket serverSocket = new ServerSocket(12345)) {
+            System.out.println("等待中…");
+            clientSocket = serverSocket.accept();
+        }
+//        new Thread(() -> {}){}.start();
+        InputStream in = clientSocket.getInputStream();
+        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        String line;
 
-            while ((line = br.readLine()) != null) {
-                System.out.println("收到了=" + line);
-            }
-            System.out.println("完美結束");
+        while ((line = br.readLine()) != null) {
+            System.out.println("收到了=" + line);
+        }
+        System.out.println("完美結束");
 //        }
     }
 }

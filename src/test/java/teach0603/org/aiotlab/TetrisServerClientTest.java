@@ -27,8 +27,7 @@ class TetrisServerClientTest {
             TetrisTestTCPClient client = new TetrisTestTCPClient();
             client.connect("localhost", server_port);
             client.disconnect();
-        }
-        catch (Exception exp) {
+        } catch (Exception exp) {
             System.out.println(exp.getMessage());
             fail();
         }
@@ -48,8 +47,7 @@ class TetrisServerClientTest {
             assertEquals(linesRemoved, 0, "After starting a new game, the number of lines should be 0");
 
             client.disconnect();
-        }
-        catch (Exception exp) {
+        } catch (Exception exp) {
             System.out.println(exp.getMessage());
             fail();
         }
@@ -80,7 +78,7 @@ class TetrisServerClientTest {
             client.sendRequest("start");
             // Because of request-response pattern, server will first generate a random piece.
             // So we need to drop squares at least three times to guarantee removing lines
-            for (int i=0; i<3; i++) {
+            for (int i = 0; i < 3; i++) {
                 for (int x = -6; x <= 4; x += 2) {
                     // Create a new square Tetrominoe
                     // Due to request-response pattern, new_piece will cause server to call drop_down first
@@ -97,8 +95,7 @@ class TetrisServerClientTest {
             assertTrue(linesRemoved > 2, "The removed lines of square drop test should be larger that 2. Check SquareDropTest.png");
 
             client.disconnect();
-        }
-        catch (Exception exp) {
+        } catch (Exception exp) {
             System.out.println(exp.getMessage());
             fail();
         }
@@ -108,8 +105,7 @@ class TetrisServerClientTest {
         try {
             File outputfile = new File(filename);
             ImageIO.write(bImg, "PNG", outputfile);
-        }
-        catch (IOException exp) {
+        } catch (IOException exp) {
             System.out.println(exp.getMessage());
         }
     }
